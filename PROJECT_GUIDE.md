@@ -2,16 +2,16 @@
 
 ## 📋 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Technologies Used](#technologies-used)
-3. [Project Structure](#project-structure)
-4. [Core Concepts Explained](#core-concepts-explained)
-5. [Component Breakdown](#component-breakdown)
-6. [How the Application Works](#how-the-application-works)
-7. [Study Guide](#study-guide)
-8. [Common Angular Patterns Used](#common-angular-patterns-used)
-9. [How to Run the Project](#how-to-run-the-project)
-10. [Testing the Features](#testing-the-features)
+1. [Project Overview] (#project-overview)
+2. [Technologies Used] (#technologies-used)
+3. [Project Structure] (#project-structure)
+4. [Core Concepts Explained] (#core-concepts-explained)
+5. [Component Breakdown] (#component-breakdown)
+6. [How the Application Works] (#how-the-application-works)
+7. [Study Guide] (#study-guide)
+8. [Common Angular Patterns Used] (#common-angular-patterns-used)
+9. [How to Run the Project] (#how-to-run-the-project)
+10. [Testing the Features] (#testing-the-features)
 
 ---
 
@@ -73,7 +73,6 @@ A free fake REST API for testing: `https://jsonplaceholder.typicode.com/todos`
 
 ## 📁 Project Structure
 
-```
 src/
 ├── app/
 │   ├── Models/
@@ -97,7 +96,6 @@ src/
 │   └── app.config.ts                   # App configuration (not shown but exists)
 ├── index.html                          # Entry HTML file
 └── main.ts                             # Application entry point
-```
 
 ---
 
@@ -575,7 +573,6 @@ export const routes: Routes = [
 
 ### **Complete Flow Diagram**
 
-```
 ┌─────────────────────────────────────────────────────────────┐
 │                        USER OPENS APP                        │
 └──────────────────────┬──────────────────────────────────────┘
@@ -621,13 +618,11 @@ export const routes: Routes = [
 │  Component updates: this.todos = data                       │
 │  Template automatically re-renders with new data            │
 └─────────────────────────────────────────────────────────────┘
-```
 
 ### **User Action Flows**
 
 #### **Flow 1: Adding a New Todo**
 
-```
 1. User clicks "Add New To-Do" button
 2. Router navigates to '/add'
 3. TodoFormComponent loads
@@ -641,11 +636,9 @@ export const routes: Routes = [
    - Returns Observable
 9. Component subscribes and navigates to '/'
 10. TodoListComponent re-renders with new todo
-```
 
 #### **Flow 2: Editing a Todo**
 
-```
 1. User clicks "Edit" button on a todo
 2. Router navigates to '/edit/5' (example ID)
 3. TodoFormComponent loads
@@ -664,11 +657,9 @@ export const routes: Routes = [
     - Returns Observable
 12. Component navigates to '/'
 13. TodoListComponent shows updated todo
-```
 
 #### **Flow 3: Deleting a Todo**
 
-```
 1. User clicks "Delete" button
 2. Browser shows confirmation dialog
 3. If confirmed:
@@ -679,9 +670,6 @@ export const routes: Routes = [
    - Component receives success
    - Updates local array: this.todos = this.todos.filter(...)
    - Template re-renders without deleted todo
-```
-
----
 
 ## 📚 Study Guide
 
@@ -769,7 +757,6 @@ export const routes: Routes = [
 
 #### **1. Component Communication**
 
-```
 Parent Component
     ↓ (Input)
 Child Component
@@ -778,7 +765,6 @@ Parent Component
 
 Alternative: Through Service
 Component A → Service ← Component B
-```
 
 In this project:
 
@@ -787,7 +773,6 @@ In this project:
 
 #### **2. Observable Pattern**
 
-```
 Service creates Observable
      ↓
 Component subscribes
@@ -796,7 +781,6 @@ Service emits data
      ↓
 Component receives in next()
 Component handles errors in error()
-```
 
 #### **3. Angular Change Detection**
 
@@ -903,7 +887,6 @@ ng serve
 
 ### **Project Structure After Setup**
 
-```
 todo-app/
 ├── src/
 │   └── app/
@@ -927,7 +910,6 @@ todo-app/
 │       ├── app.routes.ts
 │       └── app.config.ts
 └── package.json
-```
 
 ---
 
@@ -993,24 +975,25 @@ todo-app/
 
 ### **1. Browser Developer Tools**
 
-```
 Press F12 to open DevTools
 
 Console Tab:
+
 - View console.log() outputs
 - See error messages
 - Debug JavaScript
 
 Network Tab:
+
 - See API requests
 - Check response data
 - View HTTP errors
 
 Elements Tab:
+
 - Inspect HTML structure
 - See applied CSS
 - Test CSS changes live
-```
 
 ### **2. Angular DevTools**
 
