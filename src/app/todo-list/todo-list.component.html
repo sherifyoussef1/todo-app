@@ -1,0 +1,56 @@
+<div class="todo-list">
+  <h2>My To-Do List</h2>
+
+  <a routerLink="/add">
+    <button class="btn-add">+ Add New To-Do</button>
+  </a>
+
+  @if (loading) {
+    <div class="loading">
+      <p>Loading todos...</p>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!loading) {
+    @if (todos.length === 0) {
+      <div class="empty-state">
+        <p>No todos found.</p>
+        <p>Click "Add New To-Do" to create your first todo!</p>
+      </div>
+    } @else {
+      <div class="todo-count">
+        Total: {{ todos.length }} | Completed: {{ (todos | filter: 'completed' : true).length }} |
+        Pending: {{ (todos | filter: 'completed' : false).length }}
+      </div>
+
+      <ul class="todo-items">
+        @for (todo of todos; track todo.id) {
+          <li class="todo-item" [class.completed-item]="todo.completed">
+            <div class="todo-content">
+              <span class="todo-title" [class.completed]="todo.completed">
+                {{ todo.title }}
+              </span>
+              <span class="todo-status" [class.status-completed]="todo.completed">
+                {{ todo.completed ? '✓ Completed' : '○ Pending' }}
+              </span>
+            </div>
+            <div class="button-group">
+              <a [routerLink]="['/edit', todo.id]">
+                <button class="btn-edit">✎ Edit</button>
+              </a>
+              <button class="btn-delete" (click)="deleteTodo(todo.id!, todo.title)">
+                🗑 Delete
+              </button>
+            </div>
+          </li>
+        }
+      </ul>
+    }
+  }
+</div>

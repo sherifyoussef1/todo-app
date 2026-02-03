@@ -1,0 +1,73 @@
+<div class="todo-form">
+  <div class="form-header">
+    @if (isEditMode) {
+      <h2>✎ Edit To-Do</h2>
+    } @else {
+      <h2>+ Add New To-Do</h2>
+    }
+  </div>
+
+  @if (loading) {
+    <div class="loading">
+      <p>Loading todo...</p>
+    </div>
+  }
+
+  @if (errorMessage) {
+    <div class="error">
+      {{ errorMessage }}
+    </div>
+  }
+
+  @if (!loading) {
+    <form (ngSubmit)="submit()" #todoForm="ngForm">
+      <div class="form-group">
+        <label for="title"> Title <span class="required">*</span> </label>
+        <input
+          type="text"
+          id="title"
+          name="title"
+          [(ngModel)]="todo.title"
+          placeholder="Enter todo title (min 3 characters)"
+          required
+          minlength="3"
+          #titleInput="ngModel"
+          class="form-control"
+        />
+        @if (titleInput.invalid && titleInput.touched) {
+          <div class="field-error">
+            @if (titleInput.errors?.['required']) {
+              <small>Title is required</small>
+            }
+            @if (titleInput.errors?.['minlength']) {
+              <small>Title must be at least 3 characters</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="form-group checkbox-group">
+        <label for="completed" class="checkbox-label">
+          <input type="checkbox" id="completed" name="completed" [(ngModel)]="todo.completed" />
+          <span>Mark as completed</span>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit" [disabled]="todoForm.invalid">
+          @if (isEditMode) {
+            💾 Update Todo
+          } @else {
+            ✓ Add Todo
+          }
+        </button>
+
+        <button type="button" class="btn-cancel" (click)="cancel()">✗ Cancel</button>
+      </div>
+    </form>
+  }
+
+  <div class="form-footer">
+    <a routerLink="/" class="back-link">← Back to List</a>
+  </div>
+</div>
