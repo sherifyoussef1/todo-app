@@ -22,13 +22,13 @@
   @if (!loading) {
     <form (ngSubmit)="submit()" #todoForm="ngForm">
       <div class="form-group">
-        <label for="title"> Title <span class="required">*</span> </label>
+        <label for="title"> To-Do <span class="required">*</span> </label>
         <input
           type="text"
           id="title"
           name="title"
           [(ngModel)]="todo.title"
-          placeholder="Enter todo title (min 3 characters)"
+          placeholder="Enter To-Do (min 3 characters)"
           required
           minlength="3"
           #titleInput="ngModel"
@@ -37,10 +37,10 @@
         @if (titleInput.invalid && titleInput.touched) {
           <div class="field-error">
             @if (titleInput.errors?.['required']) {
-              <small>Title is required</small>
+              <small>To-Do Text is required</small>
             }
             @if (titleInput.errors?.['minlength']) {
-              <small>Title must be at least 3 characters</small>
+              <small>To-Do Text must be at least 3 characters</small>
             }
           </div>
         }
